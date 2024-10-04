@@ -307,7 +307,8 @@ Percentage of the requests served within a certain time (ms)
  100%    234 (longest request)
 
 
-<img width="1394" alt="Captura de Tela 2024-10-03 às 21 36 54" src="https://github.com/user-attachments/assets/523bea16-1168-42e9-90e9-11c4c9b2881b">
+<img width="1394" alt="Captura de Tela 2024-10-03 às 21 36 54" src="https://github.com/user-attachments/assets/38e09cdd-43f6-460b-9cdd-7487e0dc8bf5">
+
 
 
 
