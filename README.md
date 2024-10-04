@@ -259,6 +259,53 @@ Aumentar quantidade de chamadas simultâneas e avaliar o comportamento.
 ```
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
+O bulkhead é utilizado para resiliencia para garantir um limite de chamadas simultaneas. utilizei o modulo worker_threads para criar novas threads que executarem o externalService. O worker será criado apenas quando o isMainThread é false. 
+O bulkheadpolicy foi ajustado para limitar a execucao de threads a um maximo de 2 requisicoes simultaneas 
+E ao finalizar o worker envia a resposta de volta para a thread principal quando termina
+
+Fazendo uma chamada no apache bean
+
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /api/v1/bulkhead
+Document Length:        27 bytes
+
+Concurrency Level:      2
+Time taken for tests:   9.313 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      22700 bytes
+HTML transferred:       2700 bytes
+Requests per second:    10.74 [#/sec] (mean)
+Time per request:       186.258 [ms] (mean)
+Time per request:       93.129 [ms] (mean, across all concurrent requests)
+Transfer rate:          2.38 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   175  182   8.2    180     234
+Waiting:      175  182   8.2    179     234
+Total:        176  182   8.2    180     234
+
+Percentage of the requests served within a certain time (ms)
+  50%    180
+  66%    180
+  75%    181
+  80%    181
+  90%    187
+  95%    201
+  98%    212
+  99%    234
+ 100%    234 (longest request)
+
 
 
 ```
