@@ -389,7 +389,22 @@ Ajustar o o percentual de falhas para que o circuit breaker obtenha sucesso ao r
 Observar comportamento do circuito no console.
 
 ```
-// INSIRA SUA ANÁLISE OU PARECER ABAIXO
+O circuit breaker é essencial para a resiliência de aplicações, pois permite controlar o fluxo de execução quando um serviço apresenta falhas, evitando que um problema em um serviço secundário afete o funcionamento do principal.
+
+Por exemplo, imagine um aplicativo de entrega de comida com dois serviços:
+
+Serviço de cardápio que retorna os pratos disponíveis.
+Serviço de recomendações que sugere pratos com base no histórico do usuário.
+O serviço de cardápio é o principal, enquanto o de recomendações é secundário. Se o serviço de recomendações falhar, o circuit breaker pode interromper as chamadas para ele, garantindo que o cardápio continue sendo exibido normalmente, mesmo sem as sugestões personalizadas.
+
+Os três estados do circuit breaker são:
+
+Closed: Fluxo normal, onde ambos os serviços são chamados.
+Open: O circuito está aberto devido a falhas recorrentes; as recomendações não são mais chamadas.
+Half-Open: Algumas requisições testam o serviço de recomendações para verificar se voltou ao normal.
+No Resilience4j, é possível configurar parâmetros como failureRateThreshold (limite de taxa de falha), slowCallRateThreshold (limite de chamadas lentas) e waitDurationInOpenState (tempo para reavaliar o circuito).
+
+Resumindo: o circuit breaker isola falhas para manter o funcionamento do serviço principal e permite ajustes finos para gerenciar variações de desempenho, garantindo resiliência em ambientes distribuídos.
 
 
 
