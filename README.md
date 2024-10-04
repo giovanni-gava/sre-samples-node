@@ -113,6 +113,10 @@ Ajustar configurações de timeout e corrigir erro de timeout execedido ao invoc
 ```
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
 
+O timeout acontecia porque o serviço simulava um tempo de resposta de 5 segundos enquanto o timeout estava definido com 3 segundos. 
+A abordagem usada é similar a de um cenário real seria melhorar a performance da aplicação e ajustar o timeout para um valor que garanta resiliencia mas tambem mantenha a seguranca
+1-A fim de garantir a performance foi feita a melhoria de tempo de resposta para 200ms pois o tempo de 5000ms para retornar a chamada náo é viavel
+2 - O timeout foi ajustado para 300ms pois o valor vigente de 3000ms onera o uso dos recursos
 
 
 ```
@@ -179,6 +183,14 @@ Alterar limite de requisições permitidas para 100 num intervalo de 1 minuto e 
 
 ```
 // INSIRA SUA ANÁLISE OU PARECER ABAIXO
+
+Para validar o rate limit escrevi o script abaixo
+
+rate-limit.sh
+
+// INSIRA SUA ANÁLISE OU PARECER ABAIXO
+
+O rate limit é necessario para impedir um numero massivo de requisicoes num determinado endpoint e garantir que os recursos nao sejam onerados. Tambem é necessário para impedir que ataques maliciosos como DDoS. Rate limit pode ser aplicado de diferentes maneiras, sejam via geolocation ou range de ip
 
 
 
